@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import TheWelcome from '../components/TheWelcome.vue'
+import BLEcomponent from '@/components/generic/BLEcomponent.vue'
+
 </script>
 
 <template>
   <main>
-    <TheWelcome />
+    <BLEcomponent />
   </main>
 </template>
