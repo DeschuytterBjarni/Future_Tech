@@ -5,6 +5,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { UsersModule } from './users/users.module';
 import { UsersController } from './users/users.controller';
 import { UsersService } from './users/users.service';
+import { ExercisesModule } from './exercises/exercises.module';
 
 @Module({
   imports: [
@@ -17,6 +18,7 @@ import { UsersService } from './users/users.service';
       useUnifiedTopology: true, // Disable deprecated warnings
     }),
     UsersModule,
+    ExercisesModule,
   ],
   controllers: [AppController],
   providers: [AppService],
