@@ -54,7 +54,7 @@
             <p class="text-gray-600 ">Repetitions: 10</p>
             <p class="text-gray-600 ">Sets: 3</p>
           </div>
-          <RouterLink to="/patient/exercises/wvr" class="place-self-center">
+          <RouterLink to="/patient/exercises/bs" class="place-self-center">
             <button
               class="w-40 mb-4 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full mx-2">START
               EXERCISE</button>
