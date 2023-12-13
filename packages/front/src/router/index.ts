@@ -33,7 +33,7 @@ const router = createRouter({
       path: '/patient/exercises/:id',
       name: 'exercise',
       component: () => import('../views/patientPractise.vue')
-    },
+    }
     // {
     //   path: '/:pathMatch(.*)*',
     //   component: () => import('../views/NotFound.vue'),
