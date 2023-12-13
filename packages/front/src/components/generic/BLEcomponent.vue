@@ -1,30 +1,33 @@
 <template>
-    <div class="grid grid-cols-1 gap-x-4 gap-y-4">
-        <div>{{ isSupported ? 'Bluetooth Web API Supported' : 'Your browser does not support the Bluetooth Web API' }}</div>
-
-        <div v-if="isSupported">
-            <button @click="requestDevice()">
-                Request Bluetooth Device {{ characteristicData }}
-            </button>
-        </div>
-
-        <div v-if="device">
-            <p>Device Name: {{ device.name }}</p>
-        </div>
-
-        <div v-if="isConnected" class="bg-green-500 text-white p-3 rounded-md">
-            <p>Connected</p>
-        </div>
-
-        <div v-if="!isConnected" class="bg-orange-800 text-white p-3 rounded-md">
-            <p>Not Connected</p>
-        </div>
-
-        <div v-if="error">
-            <div>Errors:</div>
-            <pre>
-                <code class="block p-5 whitespace-pre">{{ error }}</code>
-            </pre>
+    <div class="w-full max-w-xs">
+        <div class="border text-card-foreground bg-white dark:bg-gray-900 shadow-md rounded-lg" data-v0-t="card">
+            <div class="flex flex-col space-y-1.5 p-6">
+                <div class="flex items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="h-6 w-6 text-blue-500 dark:text-blue-400">
+                        <path d="m7 7 10 10-5 5V2l5 5L7 17"></path>
+                    </svg>
+                    <h3 class="text-2xl font-semibold leading-none tracking-tight">Bluetooth</h3>
+                </div>
+                <p class="text-sm text-gray-600 dark:text-gray-200">Connect with Squeezy.</p>
+            </div>
+            <div class="p-6 mt-4">
+                <div class="flex flex-col-reverse items-center justify-between">
+                    <div v-if="!isConnected" class="flex items-center gap-2">
+                        <span class="flex h-3 w-3 rounded-full bg-red-500"></span>
+                        <p class="text-sm font-medium text-gray-600 dark:text-gray-300">Status: Disconnected</p>
+                    </div>
+                    <div v-if="isConnected" class="flex items-center gap-2">
+                        <span class="flex h-3 w-3 rounded-full bg-green-500"></span>
+                        <p class="text-sm font-medium text-gray-600 dark:text-gray-300">Status: Connected</p>
+                    </div>
+                    <button @click="requestDevice()"
+                        class="mb-8 inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 text-blue-500 border-blue-500 dark:text-blue-400 dark:border-blue-400">
+                        Connect
+                    </button>
+                </div>
+            </div>
         </div>
     </div>
 </template>
