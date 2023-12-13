@@ -56,12 +56,12 @@
               <h3 class="tracking-tight text-lg font-semibold">Next exercise</h3>
             </div>
             <div class="p-6">
-                <p class="text-gray-600 ">wrist vertical rotation</p>
-                <p class="text-gray-600 ">Duration: 10 minutes</p>
-                <p class="text-gray-600 ">Repetitions: 10</p>
+                <p class="text-gray-600 ">Ball squeeze</p>
+                <p class="text-gray-600 ">Duration: 8 minutes</p>
+                <p class="text-gray-600 ">Repetitions: 8</p>
                 <p class="text-gray-600 ">Sets: 3</p>
             </div>
-            <RouterLink to="/patient/exercises/wvr" class="place-self-center">
+            <RouterLink to="/patient/exercises/bs" class="place-self-center">
                 <button class="w-40 mb-4 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full mx-2">START EXERCISE</button>
             </RouterLink>
           </div>

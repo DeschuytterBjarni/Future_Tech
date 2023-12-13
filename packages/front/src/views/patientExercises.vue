@@ -8,7 +8,7 @@
                     class="relative flex shrink-0 overflow-hidden rounded-full w-8 h-8"
                     src="/placeholder.svg?height=50&amp;width=50"
                   ></span>
-                  <span class="font-medium">Patient Name</span>
+                  <span class="font-medium">Jeff</span>
                 </a>
                 <RouterLink to="/patient">
                     <button class="flex items-center space-x-2 text-gray-600 " >
@@ -38,9 +38,11 @@
                 </RouterLink>
               </nav>
               <div class="flex-shrink-0 px-4 py-2">
-                <button class="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2">
-                  Logout
-                </button>
+                <RouterLink to="/">
+                    <button class="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2">
+                        Logout
+                    </button>
+                </RouterLink>
               </div>
             </div>
           </aside>
@@ -54,12 +56,12 @@
                   <h3 class="tracking-tight text-lg font-bold">TODAY</h3>
                 </div>
                 <div class="p-6">
-                    <p class="text-gray-600 ">wrist vertical rotation</p>
-                    <p class="text-gray-600 ">Duration: 10 minutes</p>
-                    <p class="text-gray-600 ">Repetitions: 10</p>
+                    <p class="text-gray-600 ">Ball squeeze</p>
+                    <p class="text-gray-600 ">Duration: 8 minutes</p>
+                    <p class="text-gray-600 ">Repetitions: 8</p>
                     <p class="text-gray-600 ">Sets: 3</p>
                 </div>
-                <RouterLink to="/patient/exercises/wvr" class="place-self-center">
+                <RouterLink to="/patient/exercises/bs" class="place-self-center">
                     <button class="w-40 mb-4 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full mx-2">START EXERCISE</button>
                 </RouterLink>
               </div>
@@ -79,9 +81,9 @@
                 <h3 class="tracking-tight text-lg font-bold">TODAY</h3>
               </div>
               <div class="p-6">
-                  <p class="text-gray-600 ">Ball squeeze</p>
-                  <p class="text-gray-600 ">Duration: 8 minutes</p>
-                  <p class="text-gray-600 ">Repetitions: 8</p>
+                  <p class="text-gray-600 ">Wrist vertical rotation</p>
+                  <p class="text-gray-600 ">Duration: 10 minutes</p>
+                  <p class="text-gray-600 ">Repetitions: 10</p>
                   <p class="text-gray-600 ">Sets: 3</p>
               </div>
             </div>
