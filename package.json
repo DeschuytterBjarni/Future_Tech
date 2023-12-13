@@ -23,8 +23,10 @@
     "useTabs": false
   },
   "dependencies": {
+    "chart.js": "^4.4.1",
     "lucide-vue-next": "^0.294.0",
     "vue": "^3.3.11",
+    "vue-chartjs": "^5.2.0",
     "vue-router": "^4.2.5"
   },
   "devDependencies": {
