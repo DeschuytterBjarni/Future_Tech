@@ -1,5 +1,5 @@
 <template>
-    <Line :data="data" :options="options" />
+    <Line :data="data" :options="options"/>
   </template>
   
   <script lang="ts">

@@ -6,7 +6,7 @@
       >
         <router-link
           class="flex items-center gap-2 text-lg font-semibold md:text-base"
-          to="#"
+          to="/doctor/dashboard"
         >
           <span>Doctor's Dashboard</span>
         </router-link>
