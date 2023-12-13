@@ -1,3 +1,9 @@
-import { createApp, type App as VueApp } from 'vue'
+import { createApp } from 'vue'
+import './index.css'
+
 import App from './App.vue'
-const app: VueApp = createApp(App)
+import router from './router/index'
+
+const app = createApp(App)
+app.use(router)
+app.mount('#app')
