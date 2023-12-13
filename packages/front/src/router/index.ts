@@ -1,8 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
 import HomeView from '../views/HomeView.vue'
-import Dashboard from '../views/Dashboard.vue'
-import PatientDetail from '../views/PatientDetail.vue'
+import DoctorDashboard from '../views/DoctorDashboard.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -13,17 +12,12 @@ const router = createRouter({
     },
     {
       path: '/doctor',
-      name: 'dashboard',
-      children: [
-        {
-          path: 'dashboard',
-          component: () => import('../views/Dashboard.vue'),
-        },
-        {
-          path: 'profile',
-          component: () => import('../views/PatientDetail.vue'),
-        },
-      ]
+      component: DoctorDashboard,
+    },
+    {
+      path: '/doctor/patient',
+      name: 'doctor',
+      component: () => import('../views/PatientDetail.vue')
     },
     {
       path: '/patient',
@@ -38,7 +32,6 @@ const router = createRouter({
     {
       path: '/patient/exercises/:id',
       name: 'exercise',
-    }
       component: () => import('../views/patientPractise.vue')
     },
     // {

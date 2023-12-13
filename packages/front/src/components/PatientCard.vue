@@ -11,7 +11,7 @@
           </h3>
           <router-link
           class="flex items-center gap-2 text-lg font-semibold md:text-base"
-          to="/doctor/profile"
+          to="/doctor/patient"
         >
           <span class="text-sm text-blue-600">View profile</span>
         </router-link>

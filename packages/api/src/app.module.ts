@@ -12,7 +12,7 @@ import { FinishedExercisesModule } from './finished-exercises/finished-exercises
   imports: [
     TypeOrmModule.forRoot({
       type: 'mongodb',
-      url: 'mongodb://localhost:27031/futureTech',
+      url: 'mongodb://localhost:27031/infrastructures',
       entities: [__dirname + '/**/*.entity.{js,ts}'],
       synchronize: true, // Careful with this in production
       useNewUrlParser: true,
