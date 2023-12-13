@@ -43,7 +43,7 @@
                 class="relative flex h-10 w-10 shrink-0 overflow-hidden rounded-full bg-gray-300"
               ></span>
               <div>
-                <h4 class="font-semibold">Bella White</h4>
+                <h4 class="font-semibold">jos</h4>
                 <p class="text-xs text-gray-500">5 exercises this week</p>
               </div>
             </div>
@@ -70,9 +70,8 @@
             >
           </CardHeader>
           <CardContent class="flex flex-col gap-4">
-            <div>
-              <h4 class="font-semibold">Ball squeeze</h4>
-              <p class="text-xs text-gray-500">15 minutes, 3 times a week</p>
+            <div v-for="i of received2">
+              <h4 class="font-semibold">{{ i.name }}</h4>
             </div>
           </CardContent>
         </Card>
@@ -83,10 +82,22 @@
             <CardTitle class="text-sm font-medium">Recent Activities</CardTitle>
           </CardHeader>
           <CardContent class="flex flex-col gap-4">
-            <div>
-              <h4 class="font-semibold">John Doe</h4>
+            <div v-for="i of received">
+              <h4 class="font-semibold">jos</h4>
               <p class="text-xs text-gray-500">
-                Completed 30 minutes of ball squeeze
+                {{ i.exerciseId }}
+              </p>
+              <p class="text-xs text-gray-500">
+                Repetitions: {{ i.repetitions }}
+              </p>
+              <p class="text-xs text-gray-500">
+                Sets: {{ i.sets }}
+              </p>
+              <p class="text-xs text-gray-500">
+                Duration: {{ i.duration }} minutes
+              </p>
+              <p class="text-xs text-gray-500">
+                Done at: {{ i.createdAt }}
               </p>
             </div>
           </CardContent>
@@ -103,6 +114,8 @@ import CardTitle from '@/components/CardTitle.vue'
 import CardContent from '@/components/CardContent.vue'
 import Avatar from '@/components/Avatar.vue'
 import LineChart from '@/components/LineChart.vue'
+import { ref } from 'vue'
+
 
 export default {
   components: {
@@ -112,6 +125,34 @@ export default {
     CardContent,
     Avatar,
     LineChart,
+  },
+  setup() {
+    const received = ref()
+    const received2 = ref ()
+    const data = fetch('http://localhost:3000/finished-exercises/')
+      .then(res => {
+        console.log(res)
+        return res.json()
+      })
+      .then(data => {
+        console.log(data)
+        received.value = data
+        return data
+      })
+
+    const data2 = fetch('http://localhost:3000/exercises/')
+      .then(res => {
+        console.log(res)
+        return res.json()
+      })
+      .then(data2 => {
+        console.log(data2)
+        received2.value = data2
+        return data2
+      })
+
+    console.log(received)
+    return { data, received, data2, received2 }
   },
 }
 </script>
