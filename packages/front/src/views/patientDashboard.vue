@@ -8,7 +8,7 @@
                 class="relative flex shrink-0 overflow-hidden rounded-full w-8 h-8"
                 src="/placeholder.svg?height=50&amp;width=50"
               ></span>
-              <span class="font-medium">Patient Name</span>
+              <span class="font-medium">Jeff</span>
             </a>
             <RouterLink to="/patient" class="mt-8">
                 <button class="flex items-center space-x-2 text-gray-600 " >
@@ -47,7 +47,7 @@
         </div>
       </aside>
       <main class="flex-grow">
-        <header class="p-4 bg-white border-b ">
+        <header class="p-4 bg-white">
           <h1 class="text-xl">DASHBOARD</h1>
         </header>
         <section class="p-4 space-y-4">
