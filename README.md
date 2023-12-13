@@ -1,4 +1,4 @@
-b# Future_Tech
+# Future_Tech
 
 ## Idee
 2 dashboards voor arts en patiënt
@@ -17,3 +17,9 @@ revalidatie van hand-/pols-operaties met verschillende oefeningen:
 
 ## Opmerking
 - hoekmeting willen artsen zien
+
+## Data
+- oefeningen
+    - naam
+    - realtime kijken naar hoek en tonen op scherm
+    - 
