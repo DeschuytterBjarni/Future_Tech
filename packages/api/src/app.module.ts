@@ -6,6 +6,7 @@ import { UsersModule } from './users/users.module';
 import { UsersController } from './users/users.controller';
 import { UsersService } from './users/users.service';
 import { ExercisesModule } from './exercises/exercises.module';
+import { FinishedExercisesModule } from './finished-exercises/finished-exercises.module';
 
 @Module({
   imports: [
@@ -19,6 +20,7 @@ import { ExercisesModule } from './exercises/exercises.module';
     }),
     UsersModule,
     ExercisesModule,
+    FinishedExercisesModule,
   ],
   controllers: [AppController],
   providers: [AppService],
