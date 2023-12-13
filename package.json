@@ -23,7 +23,8 @@
     "useTabs": false
   },
   "dependencies": {
-    "vue": "^3.3.11"
+    "vue": "^3.3.11",
+    "vue-router": "^4.2.5"
   },
   "devDependencies": {
     "tailwindcss": "^3.3.6"
