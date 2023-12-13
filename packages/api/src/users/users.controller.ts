@@ -24,6 +24,11 @@ export class UsersController {
     // return "test Get User with id"
   }
 
+  @Get('isDoctor/:bool')
+  findUsersByIsDoctor(@Param('bool') bool: boolean) {
+    return this.usersService.findUsersByIsDoctor(bool);
+  }
+
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
     return this.usersService.update(+id, updateUserDto);

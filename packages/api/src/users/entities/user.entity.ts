@@ -11,6 +11,6 @@ export class User {
   @Column()
   name: string;
 
-  @Column()
+  @Column({type: 'boolean'})
   isDoctor: boolean;
 }

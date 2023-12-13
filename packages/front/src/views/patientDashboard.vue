@@ -66,7 +66,9 @@
           </div>
           <div class="p-6">
             <div class="w-full h-[300px]">
-              <div style="width: 100%; height: 100%;"></div>
+              <div style="width: 100%; height: 100%;">
+                <LineChart />
+              </div>
             </div>
           </div>
         </div>
@@ -74,3 +76,7 @@
     </main>
   </div>
 </template>
+
+<script setup lang="ts">
+import LineChart from '../components/LineChart.vue'
+</script>
