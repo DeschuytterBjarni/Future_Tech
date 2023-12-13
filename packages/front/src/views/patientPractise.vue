@@ -30,8 +30,7 @@
                         </button>
                     </RouterLink>
                     <div class="w-full max-w-xs">
-                        <div class="border text-card-foreground bg-white shadow-md rounded-lg"
-                            data-v0-t="card">
+                        <div class="border text-card-foreground bg-white shadow-md rounded-lg" data-v0-t="card">
                             <div class="flex flex-col space-y-1.5 p-6">
                                 <div class="flex items-center gap-2">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -312,39 +311,49 @@ export default {
                     pushCharacteristic.addEventListener('characteristicvaluechanged',
                         (event: any) => {
                             console.log(event.target.value.getFloat32(0, true))
+                            // hard enough push
                             if (event.target.value.getFloat32(0, true) >= 85) {
                                 ingood.value = true && endInGood.value == false
+                                // counter for 1 rep
                                 if (exCounter.value > 0) {
                                     exCounter.value -= 1
+                                    start.value = false
                                 }
+                                else {
+                                    start.value = true
+                                }
+                                // end of counter
                                 if (exCounter.value <= 0 && endInGood.value == false && repetitions.value > 0) {
                                     repetitions.value -= 1
                                     exCounter.value = 15
                                     endInGood.value = true
+                                    start.value = true
                                 }
+                                //  end of set
                                 if (repetitions.value <= 0 && sets.value > 0) {
                                     sets.value -= 1
                                     repetitions.value = 8
                                     exCounter.value = 15
                                 }
+                                // end of exercise
                                 else {
                                     if (sets.value == 0 && repetitions.value <= 0) {
                                         console.log("done")
                                         done.value = true
-                                        start.value = false
                                     }
                                 }
                                 if (sets.value == 0 && repetitions.value <= 0) {
                                     console.log("done")
                                     done.value = true
-                                    start.value = false
                                 }
                             }
                             else if (done.value == false) {
                                 ingood.value = false
+                                start.value = true
                                 exCounter.value = 15
                                 if (endInGood.value == true) {
                                     endInGood.value = false
+                                    start.value = true
                                 }
                             }
 
