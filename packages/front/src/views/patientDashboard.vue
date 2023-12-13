@@ -49,7 +49,7 @@
             <h3 class="tracking-tight text-lg font-semibold">Next exercise</h3>
           </div>
           <div class="p-6">
-            <p class="text-gray-600 ">wrist vertical rotation</p>
+            <p class="text-gray-600 ">Ball squeeze</p>
             <p class="text-gray-600 ">Duration: 2 minutes</p>
             <p class="text-gray-600 ">Repetitions: 8</p>
             <p class="text-gray-600 ">Sets: 3</p>

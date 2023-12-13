@@ -37,10 +37,10 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { PersonStanding, Clock, Calendar, } from 'lucide-vue-next'
 
-export default {
+export default{
   components: { PersonStanding, Clock, Calendar },
   props: ['patient'],
 }
