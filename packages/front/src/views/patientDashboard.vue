@@ -28,7 +28,6 @@
               <span>Exercises</span>
             </button>
           </RouterLink>
-          <BLEcomponent />
         </nav>
         <div class="flex-shrink-0 px-4 py-2">
           <RouterLink to="/">
@@ -75,7 +74,3 @@
     </main>
   </div>
 </template>
-
-<script setup lang="ts">
-import BLEcomponent from '../components/generic/BLEcomponent.vue'
-</script>

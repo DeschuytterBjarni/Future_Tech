@@ -41,7 +41,7 @@
                 </div>
             </div>
         </aside>
-        <div v-if="getId == 'wvr'">
+        <div v-if="getId == 'wvr'" class="w-full">
             <div class="p-4 bg-white grid justify-items-center">
                 <h1 class="text-3xl">Wrist vertical rotation</h1>
             </div>
