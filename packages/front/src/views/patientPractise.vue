@@ -169,7 +169,7 @@
                 </div>
             </div>
         </div>
-        <div v-if="getId == 'ballsqueeze'">
+        <div v-if="getId == 'bs'">
             <div class="p-4 bg-white grid justify-items-center w-screen">
                 <h1 class="text-3xl">Ball squeeze</h1>
             </div>
