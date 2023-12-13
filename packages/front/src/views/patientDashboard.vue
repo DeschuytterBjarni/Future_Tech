@@ -50,8 +50,8 @@
           </div>
           <div class="p-6">
             <p class="text-gray-600 ">wrist vertical rotation</p>
-            <p class="text-gray-600 ">Duration: 10 minutes</p>
-            <p class="text-gray-600 ">Repetitions: 10</p>
+            <p class="text-gray-600 ">Duration: 2 minutes</p>
+            <p class="text-gray-600 ">Repetitions: 8</p>
             <p class="text-gray-600 ">Sets: 3</p>
           </div>
           <RouterLink to="/patient/exercises/bs" class="place-self-center">
