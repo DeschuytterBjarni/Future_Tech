@@ -30,7 +30,7 @@
                         </button>
                     </RouterLink>
                     <div class="w-full max-w-xs">
-                        <div class="border text-card-foreground bg-white dark:bg-gray-900 shadow-md rounded-lg"
+                        <div class="border text-card-foreground bg-white shadow-md rounded-lg"
                             data-v0-t="card">
                             <div class="flex flex-col space-y-1.5 p-6">
                                 <div class="flex items-center gap-2">
@@ -41,18 +41,18 @@
                                     </svg>
                                     <h3 class="text-2xl font-semibold leading-none tracking-tight">Bluetooth</h3>
                                 </div>
-                                <p class="text-sm text-gray-600 dark:text-gray-200">Connect with Squeezy.</p>
+                                <p class="text-sm text-gray-600">Connect with Squeezy.</p>
                             </div>
                             <div class="p-6 mt-4">
                                 <div class="flex flex-col-reverse items-center justify-between">
                                     <div v-if="!isConnected" class="flex items-center gap-2">
                                         <span class="flex h-3 w-3 rounded-full bg-red-500"></span>
-                                        <p class="text-sm font-medium text-gray-600 dark:text-gray-300">Status: Disconnected
+                                        <p class="text-sm font-medium text-gray-600 ">Status: Disconnected
                                         </p>
                                     </div>
                                     <div v-if="isConnected" class="flex items-center gap-2">
                                         <span class="flex h-3 w-3 rounded-full bg-green-500"></span>
-                                        <p class="text-sm font-medium text-gray-600 dark:text-gray-300">Status: Connected
+                                        <p class="text-sm font-medium text-gray-600 ">Status: Connected
                                         </p>
                                     </div>
                                     <button @click="requestDevice()"
