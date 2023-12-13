@@ -25,12 +25,11 @@
       class="flex min-h-[calc(100vh - theme(spacing.16))] flex-1 flex-col gap-4 p-4 md:gap-8 md:p-10"
     >
       <div class="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-4">
-        <!-- <PatientCard
+        <PatientCard
           v-for="(patient, index) in patients"
           :key="index"
           :patient="patient"
-        /> -->
-        <p>{{ received }}</p>
+        />
       </div>
     </main>
   </div>
@@ -38,9 +37,10 @@
 
 <script lang="ts">
 import { ref } from 'vue'
-// import PatientCard from '@/components/PatientCard.vue'
+import PatientCard from '../components/PatientCard.vue'
 
 export default {
+  components: { PatientCard },
   data() {
     return {
       patients: [
@@ -77,10 +77,10 @@ export default {
       })
       .then(data => {
         console.log(data)
+        received.value = data
         return data
       })
 
-    received.value = data
     console.log(received)
     return { data, received }
   },
