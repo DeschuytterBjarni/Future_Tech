@@ -106,7 +106,7 @@
                 </div>
             </div>
         </div>
-        <div v-if="getId == 'whr'">
+        <div v-if="getId == 'wvr'">
             <div class="p-4 bg-white grid justify-items-center">
                 <h1 class="text-3xl">Wrist horizontal rotation</h1>
             </div>
@@ -169,8 +169,8 @@
                 </div>
             </div>
         </div>
-        <div v-if="getId == 'bs'">
-            <div class="p-4 bg-white grid justify-items-center">
+        <div v-if="getId == 'ballsqueeze'">
+            <div class="p-4 bg-white grid justify-items-center w-screen">
                 <h1 class="text-3xl">Ball squeeze</h1>
             </div>
             <div class="grid grid-cols-2">
@@ -256,7 +256,7 @@ export default {
         const rightgood = ref(false);
         const leftgood = ref(false);
         const start = ref(true);
-        const ingood = ref(false);
+        const ingood = ref(true);
 
         return {
             up,
