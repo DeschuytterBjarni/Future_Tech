@@ -52,6 +52,10 @@ export class FinishedExercisesService {
     return this.finishedExercisesRepository.find();
   }
 
+  findAllByUserId(userId: string) {
+    return this.finishedExercisesRepository.find({ where: { userId: new ObjectId(userId) }});
+  }
+
   findOne(id: string) {
     //@ts-ignore
     return this.finishedExercisesRepository.findOne(new ObjectId(id));
