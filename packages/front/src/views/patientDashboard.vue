@@ -49,9 +49,9 @@
             <h3 class="tracking-tight text-lg font-semibold">Next exercise</h3>
           </div>
           <div class="p-6">
-            <p class="text-gray-600 ">wrist vertical rotation</p>
-            <p class="text-gray-600 ">Duration: 10 minutes</p>
-            <p class="text-gray-600 ">Repetitions: 10</p>
+            <p class="text-gray-600 ">Ball squeeze</p>
+            <p class="text-gray-600 ">Duration: 2 minutes</p>
+            <p class="text-gray-600 ">Repetitions: 8</p>
             <p class="text-gray-600 ">Sets: 3</p>
           </div>
           <RouterLink to="/patient/exercises/bs" class="place-self-center">
@@ -66,7 +66,9 @@
           </div>
           <div class="p-6">
             <div class="w-full h-[300px]">
-              <div style="width: 100%; height: 100%;"></div>
+              <div style="width: 100%; height: 100%;">
+                <LineChart />
+              </div>
             </div>
           </div>
         </div>
@@ -74,3 +76,7 @@
     </main>
   </div>
 </template>
+
+<script setup lang="ts">
+import LineChart from '../components/LineChart.vue'
+</script>

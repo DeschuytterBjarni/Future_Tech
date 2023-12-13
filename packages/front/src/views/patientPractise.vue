@@ -29,7 +29,40 @@
                             <span>Exercises</span>
                         </button>
                     </RouterLink>
-                    <BLEcomponent />
+                    <div class="w-full max-w-xs">
+                        <div class="border text-card-foreground bg-white shadow-md rounded-lg"
+                            data-v0-t="card">
+                            <div class="flex flex-col space-y-1.5 p-6">
+                                <div class="flex items-center gap-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" class="h-6 w-6 text-blue-500 dark:text-blue-400">
+                                        <path d="m7 7 10 10-5 5V2l5 5L7 17"></path>
+                                    </svg>
+                                    <h3 class="text-2xl font-semibold leading-none tracking-tight">Bluetooth</h3>
+                                </div>
+                                <p class="text-sm text-gray-600">Connect with Squeezy.</p>
+                            </div>
+                            <div class="p-6 mt-4">
+                                <div class="flex flex-col-reverse items-center justify-between">
+                                    <div v-if="!isConnected" class="flex items-center gap-2">
+                                        <span class="flex h-3 w-3 rounded-full bg-red-500"></span>
+                                        <p class="text-sm font-medium text-gray-600 ">Status: Disconnected
+                                        </p>
+                                    </div>
+                                    <div v-if="isConnected" class="flex items-center gap-2">
+                                        <span class="flex h-3 w-3 rounded-full bg-green-500"></span>
+                                        <p class="text-sm font-medium text-gray-600 ">Status: Connected
+                                        </p>
+                                    </div>
+                                    <button @click="requestDevice()"
+                                        class="mb-8 inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 text-blue-500 border-blue-500 dark:text-blue-400 dark:border-blue-400">
+                                        Connect
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </nav>
                 <div class="flex-shrink-0 px-4 py-2">
                     <RouterLink to="/">
@@ -175,8 +208,8 @@
             </div>
             <div class="grid grid-cols-2">
                 <div class="mt-64 ml-16">
-                    <p class="text-4xl">repetitions: 8</p>
-                    <p class="text-4xl">sets: 3</p>
+                    <p class="text-4xl">repetitions: {{ repetitions }}</p>
+                    <p class="text-4xl">sets: {{ sets }}</p>
                 </div>
                 <div v-if="right" class="mt-40">
                     <svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" fill="currentColor"
@@ -219,16 +252,7 @@
                     </svg>
                 </div>
                 <div v-if="done" class="flex mt-56">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" fill="currentColor"
-                        class="bi bi-arrow-left-short" viewBox="0 0 16 16">
-                        <path fill-rule="evenodd"
-                            d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5z" />
-                    </svg>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" fill="currentColor"
-                        class="bi bi-arrow-right-short" viewBox="0 0 16 16">
-                        <path fill-rule="evenodd"
-                            d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z" />
-                    </svg>
+                    <h1 class="text-3xl">Well done!</h1>
                 </div>
                 <div v-if="start" class="flex mt-56">
                     <svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" fill="currentColor"
@@ -248,12 +272,104 @@
 </template>
 
 <script lang="ts">
-import { ref } from 'vue';
-import BLEcomponent from '../components/generic/BLEcomponent.vue';
+import { useBluetooth, useInterval } from '@vueuse/core'
+import { onMounted, ref } from 'vue';
+let ran = ref(0)
+
+interface BluetoothValues {
+    isConnected: boolean,
+    isSupported: boolean,
+    device: any, // Replace 'any' with the actual device type, if known
+    error: any, // Replace 'any' with the appropriate error type, if known
+    server: any // Define the correct type for 'server'
+}
+
 
 
 export default {
     setup() {
+        const {
+            requestDevice,
+            isConnected,
+            isSupported,
+            device,
+            error,
+            server,
+        } = useBluetooth({
+            acceptAllDevices: true,
+            optionalServices: ['19b10000-0000-537e-4f6c-d104768a1214'], // Replace with the appropriate service UUID(s)
+        })
+        async function readCharacteristic() {
+            if (server.value) {
+                ran.value = 1
+                try {
+                    console.log('Reading characteristic...')
+                    const service = await server.value.getPrimaryService('19b10000-0000-537e-4f6c-d104768a1214') // Replace with the appropriate service UUID
+                    const pushCharacteristic = await service.getCharacteristic('19b10000-a001-537e-4f6c-d104768a1214')
+                    const accCharacteristic = await service.getCharacteristic('19b10000-5001-537e-4f6c-d104768a1214')
+                    // const gyroCharacteristic = await service.getCharacteristic('19b10000-2001-537e-4f6c-d104768a1214')
+
+                    pushCharacteristic.addEventListener('characteristicvaluechanged',
+                        (event: any) => {
+                            console.log(event.target.value.getFloat32(0, true))
+                            if (event.target.value.getFloat32(0, true) >= 85) {
+                                ingood.value = true && endInGood.value == false
+                                if (exCounter.value > 0) {
+                                    exCounter.value -= 1
+                                }
+                                if (exCounter.value <= 0 && endInGood.value == false && repetitions.value > 0) {
+                                    repetitions.value -= 1
+                                    exCounter.value = 15
+                                    endInGood.value = true
+                                }
+                                if (repetitions.value <= 0 && sets.value > 0) {
+                                    sets.value -= 1
+                                    repetitions.value = 8
+                                    exCounter.value = 15
+                                }
+                                else {
+                                    if (sets.value == 0 && repetitions.value <= 0) {
+                                        console.log("done")
+                                        done.value = true
+                                        start.value = false
+                                    }
+                                }
+                                if (sets.value == 0 && repetitions.value <= 0) {
+                                    console.log("done")
+                                    done.value = true
+                                    start.value = false
+                                }
+                            }
+                            else if (done.value == false) {
+                                ingood.value = false
+                                exCounter.value = 15
+                                if (endInGood.value == true) {
+                                    endInGood.value = false
+                                }
+                            }
+
+                        });
+                    pushCharacteristic.startNotifications()
+
+                    accCharacteristic.addEventListener('characteristicvaluechanged',
+                        (event: any) => {
+                            // console.log("x: ", event.target.value.getFloat32(0, true))
+                            // console.log("y: ", event.target.value.getFloat32(4, true))
+                            // console.log("z: ", event.target.value.getFloat32(8, true))
+                        });
+                    accCharacteristic.startNotifications()
+                } catch (e) {
+                    console.error('Error reading characteristic:', e)
+                }
+            } else {
+                setTimeout(readCharacteristic, 100)
+            }
+        }
+
+        onMounted(() => {
+            readCharacteristic();
+        })
+
         const up = ref(false);
         const down = ref(false);
         const upgood = ref(false);
@@ -264,7 +380,12 @@ export default {
         const rightgood = ref(false);
         const leftgood = ref(false);
         const start = ref(true);
-        const ingood = ref(true);
+        const ingood = ref(false);
+        const endInGood = ref(false);
+
+        const repetitions = ref(8);
+        const sets = ref(3);
+        const exCounter = ref(15);
 
         return {
             up,
@@ -278,6 +399,12 @@ export default {
             leftgood,
             start,
             ingood,
+            requestDevice,
+            isConnected,
+            repetitions,
+            sets,
+            exCounter,
+            endInGood,
         };
     },
     computed: {
@@ -285,6 +412,6 @@ export default {
             return this.$route.params.id;
         }
     },
-    components: { BLEcomponent }
+    components: {}
 }
 </script>
