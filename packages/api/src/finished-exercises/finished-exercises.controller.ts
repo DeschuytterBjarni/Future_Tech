@@ -25,6 +25,11 @@ export class FinishedExercisesController {
     return this.finishedExercisesService.findOne(id);
   }
 
+  @Get('byUserId/:userId')
+  findAllByUserId(@Param('userId') userId: string) {
+    return this.finishedExercisesService.findAllByUserId(userId);
+  }
+
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateFinishedExerciseDto: UpdateFinishedExerciseDto) {
     return this.finishedExercisesService.update(+id, updateFinishedExerciseDto);

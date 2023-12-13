@@ -33,6 +33,14 @@ export class UsersService {
     return this.usersRepository.findOne(new ObjectId(id));
   }
 
+  findUsersByIsDoctor(bool: boolean) {
+    console.log("bool", bool);
+    if (bool.toString() == "true") {
+      return this.usersRepository.find({ where: { isDoctor: true }});
+    }
+    return this.usersRepository.find({ where: { isDoctor: false }});
+  }
+
   update(id: number, updateUserDto: UpdateUserDto) {
     return `This action updates a #${id} user`;
   }
