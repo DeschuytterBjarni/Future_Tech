@@ -63,12 +63,24 @@ async function readCharacteristic() {
             console.log('Reading characteristic...')
             const service = await server.value.getPrimaryService('19b10000-0000-537e-4f6c-d104768a1214') // Replace with the appropriate service UUID
             const pushCharacteristic = await service.getCharacteristic('19b10000-a001-537e-4f6c-d104768a1214')
+            const accCharacteristic = await service.getCharacteristic('19b10000-5001-537e-4f6c-d104768a1214')
+            const gyroCharacteristic = await service.getCharacteristic('19b10000-2001-537e-4f6c-d104768a1214')
 
             pushCharacteristic.addEventListener('characteristicvaluechanged',
                 (event: any) => {
-                    console.log(event.target.value.getFloat32(0, true))
+                    // console.log(event.target.value.getFloat32(0, true))
                 });
             pushCharacteristic.startNotifications()
+
+            accCharacteristic.addEventListener('characteristicvaluechanged',
+                (event: any) => {
+                    console.log("x: ", event.target.value.getFloat32(0, true))
+                    console.log("y: ", event.target.value.getFloat32(4, true))
+                    console.log("z: ", event.target.value.getFloat32(8, true))
+                });
+            accCharacteristic.startNotifications()
+
+
 
             // Read the value of the characteristic
             // const pushValue = await pushCharacteristic.readValue()
